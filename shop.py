@@ -16,6 +16,7 @@ for item, price in shop.items():
     print(item.capitalize(), "-", price)
 print()
 
+final = add_tax(total)
 while True:
     try:
         count = int(input("How many items? "))
@@ -38,7 +39,7 @@ for i in range(count):
 
 if total > 100:
     total = discount_price(total)
-
+final = add_tax(total)
 stamp = datetime.now().strftime("%d %B %Y, %H:%M")
 
 print("--- Receipt ---")
@@ -48,6 +49,18 @@ print("Date:", stamp)
 print("Total:", total)
 print("With tax:", add_tax(total))
 
+while True:
+    try:
+        paid = float(input("How much did the customer pay? "))
+        if paid < final:
+            print("Not enough. You still owe:", final-paid,)
+        else:
+            change = paid-final
+            print("Change:", change)
+            break
+    except ValueError:
+        print("please input how much has been paid")
+
 with open("receipts.txt", "a") as f:
     f.write("Date: " + stamp + "\n")
     for name, qty in counts.items():
@@ -55,3 +68,5 @@ with open("receipts.txt", "a") as f:
     f.write("Total: " + str(total) + "\n")
     f.write("With tax: " + str(add_tax(total)) + "\n")
     f.write("-----\n")
+    f.write("Paid: " + str(paid) + "\n")
+    f.write("Change: " + str(change) + "\n")
