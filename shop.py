@@ -9,7 +9,15 @@ def discount_price(price):
 
 
 total = 0
-count = int(input("How many items? "))
+while True:
+    try:
+        count = int(input("How many items? "))
+        if count <= 0:
+            print("Please enter a number above 0.")
+            continue
+        break
+    except ValueError:
+        print("Please enter a number, like 3.")
 for i in range(count):
     choice = input("What do you want? ").lower().strip()
 
@@ -27,10 +35,14 @@ print("With tax:", add_tax(total))
 if total > 100:
     total = discount_price(total)
 
-print("Date:", datetime.now().strftime("%d %B %Y, %H:%M"))
+stamp = datetime.now().strftime("%d %B %Y, %H:%M")
+
+print("Date:", stamp)
 print("Total:", total)
 print("With tax:", add_tax(total))
 
-
-
-
+with open("receipts.txt", "a") as f:
+    f.write("Date: " + stamp + "\n")
+    f.write("Total: " + str(total) + "\n")
+    f.write("With tax: " + str(add_tax(total)) + "\n")
+    f.write("-----\n")
