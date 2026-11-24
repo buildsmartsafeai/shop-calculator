@@ -1,6 +1,6 @@
 from datetime import datetime
 
-shop = {"mandazi": 20, "tea": 30, "bread": 60}
+shop = {"mandazi": 20, "tea": 30, "bread":60, "nduma":90,"samosa":50}
 
 def add_tax(price):
     return round(price * 1.16, 2)
@@ -11,6 +11,10 @@ def discount_price(price):
 
 total = 0
 counts = {}
+print("--- Menu ---")
+for item, price in shop.items():
+    print(item.capitalize(), "-", price)
+print()
 
 while True:
     try:
