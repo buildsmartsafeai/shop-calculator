@@ -24,5 +24,5 @@ bread, bread, tea -> Total: 135.0, With tax: 156.6
 Variables, input, if/elif/else, loops, dictionaries, functions, and the datetime module.
 
 ## Next steps
-- Handle invalid input (like typing letters for the item count)
-- Save receipts to a file
+
+Saves every receipt to receipts.txt with date and time, Counts quantities (bread x2), and Input validation for the item count.
