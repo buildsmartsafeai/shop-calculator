@@ -26,3 +26,4 @@ Variables, input, if/elif/else, loops, dictionaries, functions, and the datetime
 ## Next steps
 
 Saves every receipt to receipts.txt with date and time, Counts quantities (bread x2), and Input validation for the item count.
+Adds payment and calculates customer's change.
